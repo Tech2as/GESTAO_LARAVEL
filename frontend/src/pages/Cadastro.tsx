@@ -7,6 +7,7 @@ import Axios from "axios";
 
 //template 
 import ReguladoraFields from "../components/roles/ReguladoraFields";
+import OficinaFields from "../components/roles/OficinaFields";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -54,7 +55,7 @@ return (
           <ToastContainer />
         <h2 className="text-center mb-4">Sistema de Cadastro</h2>
          <Formik
-          initialValues={{ name: "",email: "", password: "", role: "", cpf: "" }}
+          initialValues={{ name: "",email: "", password: "", role: "", cpf: "" , nome_fantasia: "", cnpj: "", telefone: "", endereco: ""}}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
@@ -77,8 +78,9 @@ return (
               name="role"
             />
               </div>
-
+                <OficinaFields />
                 <ReguladoraFields />
+                
 
 
             <button type="submit" className="btn btn-success w-100 mb-2">
