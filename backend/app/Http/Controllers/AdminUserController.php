@@ -10,7 +10,7 @@ class AdminUserController extends Controller
     
    public function listarPendentes()
 {
-    $usuariosPendentes = User::where('active', false)->get();
+    $usuariosPendentes = User::where('active', false)->paginate(5);
 
     return response()->json($usuariosPendentes);
 }

@@ -1,13 +1,18 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Axios from "axios";
 
+//template 
+import ReguladoraFields from "../components/roles/ReguladoraFields";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Cadastro() {
+
+
 
   // validação do form, recebendo os valores
 const handleSubmit = async (values: { name: string; email: string; password: string }) => {
@@ -49,56 +54,33 @@ return (
           <ToastContainer />
         <h2 className="text-center mb-4">Sistema de Cadastro</h2>
          <Formik
-          initialValues={{ name: "",email: "", password: "" }}
+          initialValues={{ name: "",email: "", password: "", role: "", cpf: "" }}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
           <Form>
             <div className="mb-3">
-
-              <label htmlFor="email">Nome</label>
-               <Field
-                type="text"
-                name="name"
-                placeholder="Insira um nome"
-                className="form-control rounded-0"
-              />
-                <ErrorMessage
-                component="div"
-                className="text-danger"
-                name="name"
-              />
+              <label htmlFor="email">Função</label>
+              <Field
+              as="select"
+              name="role"
+              className="form-control rounded-0"
+            >
+              <option value="">Selecione uma role</option>
+              <option value="oficina">Oficina</option>
+              <option value="reguladora">Analista</option>
+              <option value="seguradora">Seguradora</option>
+            </Field>
+            <ErrorMessage
+              component="div"
+              className="text-danger"
+              name="role"
+            />
               </div>
 
-              <div className="mb-3">
-            <label htmlFor="email">Email</label>
-              <Field
-                type="email"
-                name="email"
-                placeholder="Insira um email"
-                className="form-control rounded-0"
-              />
-              <ErrorMessage
-                component="div"
-                className="text-danger"
-                name="email"
-              />
-            </div>
-            
-            <div className="mb-3">
-              <label htmlFor="password">Senha</label>
-              <Field
-                type="password"
-                name="password"
-                placeholder="Insira uma senha"
-                className="form-control rounded-0"
-              />
-              <ErrorMessage
-                component="div"
-                className="text-danger"
-                name="password"
-              />
-            </div>
+                <ReguladoraFields />
+
+
             <button type="submit" className="btn btn-success w-100 mb-2">
               Cadastrar
             </button>

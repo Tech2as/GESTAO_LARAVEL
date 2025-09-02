@@ -53,6 +53,21 @@ class User extends Authenticatable implements JWTSubject
         ];
     }
 
+    public function seguradora()
+{
+    return $this->hasOne(Seguradora::class);
+}
+
+public function reguladora()
+{
+    return $this->hasOne(Reguladora::class);
+}
+
+public function oficina()
+{
+    return $this->hasOne(Oficina::class);
+}
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
