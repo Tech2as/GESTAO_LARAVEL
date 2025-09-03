@@ -5,9 +5,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Axios from "axios";
 
-//template 
+//template roles
 import ReguladoraFields from "../components/roles/ReguladoraFields";
 import OficinaFields from "../components/roles/OficinaFields";
+import SeguradoraFields from "../components/roles/SeguradoraFields";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -80,6 +81,7 @@ return (
               </div>
                 <OficinaFields />
                 <ReguladoraFields />
+                <SeguradoraFields />
                 
 
 
